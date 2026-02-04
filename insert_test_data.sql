@@ -93,7 +93,6 @@ INSERT INTO favorite (post_id, user_id) VALUES
 	(@UserA_Post1, @UserB),
 	(@UserA_Post1, @UserC),
 	(@UserA_Post1, @UserD),
-	(@UserA_Post1, @UserE),
 	(@UserB_Post2, @UserA),
 	(@UserB_Post2, @UserC),
 	(@UserB_Post2, @UserD),
