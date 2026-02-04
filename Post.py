@@ -58,19 +58,16 @@ class PostDAO:
 	def create_comment(self, post_id: int, user_id: int, comment: str):
 		cursor = self.database.get_cursor()
 		
-		query = f"INSERT INTO comment (user_id, post_id, comment) VALUES ({user_id}, {post_id}, '{comment}') WHERE user_id = {user_id} AND post_id = {post_id};"
+		query = f"INSERT INTO comment (user_id, post_id, comment) VALUES ({user_id}, {post_id}, '{comment}');"
 		cursor.get().execute(query)
-
-		rows = cursor.get().fetchall()
+		cursor.connection.commit()
 
 		cursor.close()
-
-		return rows
 
 	def update_comment(self, comment_id: int, comment: str):
 		cursor = self.database.get_cursor()
 		
-		query = f"UPDATE comment SET comment = '{comment}' WHERE comment_id = {comment_id};"
+		query = f"UPDATE comment SET comment = '{comment}' WHERE id = {comment_id};"
 		cursor.get().execute(query)
 		cursor.connection.commit()
 
@@ -79,7 +76,7 @@ class PostDAO:
 	def delete_comment(self, comment_id: int):
 		cursor = self.database.get_cursor()
 		
-		query = f"UPDATE comment SET deleted_at = NOW() WHERE comment_id = {comment_id} AND deleted_at IS NULL;"
+		query = f"UPDATE comment SET deleted_at = NOW() WHERE id = {comment_id} AND deleted_at IS NULL;"
 		cursor.get().execute(query)
 		cursor.connection.commit()
 
