@@ -1,9 +1,26 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 from Database import Database
 from User import UserDAO
 from Post import PostDAO
 
 api = FastAPI(title='Test API')
+
+origins = [
+	None,
+    "http://localhost",
+    "http://localhost:8000",
+    "http://localhost:5173",
+]
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 router = APIRouter()
 
 database = Database()
