@@ -7,9 +7,6 @@ from Post import PostDAO
 api = FastAPI(title='Test API')
 
 origins = [
-	None,
-    # "http://localhost",
-    # "http://localhost:8000",
     "http://localhost:5174",
 ]
 
