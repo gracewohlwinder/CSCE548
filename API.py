@@ -8,9 +8,9 @@ api = FastAPI(title='Test API')
 
 origins = [
 	None,
-    "http://localhost",
-    "http://localhost:8000",
-    "http://localhost:5173",
+    # "http://localhost",
+    # "http://localhost:8000",
+    "http://localhost:5174",
 ]
 
 api.add_middleware(
